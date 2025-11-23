@@ -1,0 +1,7 @@
+BasedOnStyle: LLVM # Start with a predefined style like LLVM, Google, etc.
+IndentWidth: 4
+UseTab: Never
+PointerAlignment: Right
+# Other specific rules can be configured here to align with some MISRA guidelines
+# Example: Ensure braced initializers are not collapsed
+AllowShortFunctionsOnASingleLine: None

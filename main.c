@@ -14,7 +14,10 @@ int main(void) {
     // Stop watchdog timer
     WDT_A_hold(WDT_A_BASE);
 
+    // Configure clocks
     clockInit();
+
+    // Configure LED timer
     configureTimer();
 
     // Configure pins as outputs so you can see the different behaviors

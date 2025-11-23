@@ -26,5 +26,8 @@ int main(void) {
 
     __enable_interrupt();
 
-    while (1) {}
+    // Do not exit program
+    while (1) {
+        __no_operation();
+    }
 }

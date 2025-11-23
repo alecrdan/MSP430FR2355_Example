@@ -1,1 +1,1 @@
-void configureTimer();
+void configureLedTimer();

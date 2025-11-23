@@ -6,7 +6,7 @@
 volatile uint32_t tickCount = 0;
 
 // Timer_B0 in up mode: SMCLK = 1 MHz -> Divider = 64 -> Timer clock = 1 MHz / 64 = 15625 Hz
-void configureTimer(void) {
+void configureLedTimer(void) {
     const uint16_t ticksPerSecond   = 15625;
     const uint16_t ticksPerHalfSec  = floor(ticksPerSecond / 2);
 

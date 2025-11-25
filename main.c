@@ -18,7 +18,7 @@ int main(void) {
     clockInit();
 
     // Configure LED timer
-    configureTimer();
+    configureLedTimer();
 
     // Configure pins as outputs so you can see the different behaviors
     GPIO_setAsOutputPin(GPIO_PORT_P1, GPIO_PIN0); // toggles every 0.5 s (CCR0)

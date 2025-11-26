@@ -1,7 +1,7 @@
 #include <driverlib.h>
 #include "led_timer.h"
+#include "uart.h"
 
-// ---------------- Clock setup ----------------
 
 static void clockInit(void) {
     // MCLK = 1 MHz, SMCLK = 1 MHz, ACLK ≈ 32.768 kHz (REFO)
@@ -9,6 +9,15 @@ static void clockInit(void) {
     CS_initClockSignal(CS_SMCLK, CS_DCOCLKDIV_SELECT, CS_CLOCK_DIVIDER_1);
     CS_initClockSignal(CS_MCLK,  CS_DCOCLKDIV_SELECT, CS_CLOCK_DIVIDER_1);
 }
+
+
+static void UartTest(void) {
+    InitUart();
+
+    uint8_t testByte = 1;
+    UartSendByte(1);
+}
+
 
 int main(void) {
     // Stop watchdog timer
@@ -28,6 +37,9 @@ int main(void) {
     PMM_unlockLPM5();
 
     __enable_interrupt();
+
+    // Run UART test
+    UartTest();
 
     // Do not exit program
     while (1) {

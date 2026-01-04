@@ -1,6 +1,7 @@
 #include <driverlib.h>
 #include "led_timer.h"
 #include "uart.h"
+#include "adc.h"
 
 
 static void clockInit(void) {
@@ -15,13 +16,15 @@ static void UartTest(void) {
     InitUart();
 
     uint8_t testByte = 1;
-    UartSendByte(1);
+    UartSendByte(testByte);
 }
 
 
 int main(void) {
     // Stop watchdog timer
     WDT_A_hold(WDT_A_BASE);
+    // Disable the GPIO power-on default high-impedance mode
+    PMM_unlockLPM5();
 
     // Configure clocks
     clockInit();
@@ -29,12 +32,12 @@ int main(void) {
     // Configure LED timer
     configureLedTimer();
 
+    // Configure ADC
+    initAdc();
+
     // Configure pins as outputs so you can see the different behaviors
     GPIO_setAsOutputPin(GPIO_PORT_P1, GPIO_PIN0); // toggles every 0.5 s (CCR0)
     GPIO_setAsOutputPin(GPIO_PORT_P6, GPIO_PIN6); // CCR1 event (~0.25 s into each period)
-
-    // Disable the GPIO power-on default high-impedance mode
-    PMM_unlockLPM5();
 
     __enable_interrupt();
 

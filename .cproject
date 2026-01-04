@@ -188,6 +188,6 @@
         </cconfiguration>
     </storageModule>
     <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-        <project id="BlinkLED_MSP-EXP430FR2355.com.ti.ccstudio.buildDefinitions.MSP430.ProjectType.1537340382" name="MSP430" projectType="com.ti.ccstudio.buildDefinitions.MSP430.ProjectType"/>
+        <project id="MSP-EXP430FR2355_Example.com.ti.ccstudio.buildDefinitions.MSP430.ProjectType.1537340382" name="MSP430" projectType="com.ti.ccstudio.buildDefinitions.MSP430.ProjectType"/>
     </storageModule>
 </cproject>

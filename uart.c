@@ -1,10 +1,6 @@
 #include <driverlib.h>
 #include <stdint.h>
 
-/*
- *  MSP-EXP430FR2355 UART internal loopback (UCA1 with UCLISTEN set):
- *  RX interrupts are triggered purely in hardware — no pin setup required.
- */
 
 static void enableUartLoopback(void)
 {
@@ -12,10 +8,6 @@ static void enableUartLoopback(void)
     HWREG16(EUSCI_A1_BASE + OFS_UCAxSTATW) |= UCLISTEN;
 }
 
-
-// -------------------------------
-// UART INITIALIZATION (A1)
-// -------------------------------
 void InitUart(void)
 {
     // UART baud: SMCLK = 1 MHz, BRDIV=6, BRS=0x20, BRF=8 → 9600 baud
@@ -46,9 +38,6 @@ void InitUart(void)
 }
 
 
-// -------------------------------
-// UART SEND BYTE (blocking)
-// -------------------------------
 void UartSendByte(uint8_t byte)
 {
     // Wait for TX buffer to be ready
@@ -59,9 +48,6 @@ void UartSendByte(uint8_t byte)
 }
 
 
-// -------------------------------
-// UART RECEIVE BYTE (blocking)
-// -------------------------------
 uint8_t UartReceiveByteBlocking(void)
 {
     while (!EUSCI_A_UART_getInterruptStatus(EUSCI_A1_BASE,
@@ -71,9 +57,6 @@ uint8_t UartReceiveByteBlocking(void)
 }
 
 
-// -------------------------------
-// UART ISR — eUSCI_A1
-// -------------------------------
 #pragma vector = EUSCI_A1_VECTOR
 __interrupt void EUSCI_A1_ISR(void)
 {
